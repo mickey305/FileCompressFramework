@@ -2,8 +2,8 @@
 
 | | branch | travis ci |
 |:---:|:---|:---|
-| release | gh-pages | [![Build Status](https://travis-ci.org/mickey305/JSONAnalyzer.svg?branch=gh-pages)](https://travis-ci.org/mickey305/JSONAnalyzer) |
-| - | develop | [![Build Status](https://travis-ci.org/mickey305/JSONAnalyzer.svg?branch=develop)](https://travis-ci.org/mickey305/JSONAnalyzer) |
+| release | gh-pages | [![Build Status](https://travis-ci.org/mickey305/FileCompressFramework.svg?branch=gh-pages)](https://travis-ci.org/mickey305/FileCompressFramework) |
+| - | develop | [![Build Status](https://travis-ci.org/mickey305/FileCompressFramework.svg?branch=develop)](https://travis-ci.org/mickey305/FileCompressFramework) |
 
 # Installation
 ## 1 - Register repository in local library
