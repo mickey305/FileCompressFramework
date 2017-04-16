@@ -1,0 +1,15 @@
+group 'com.mickey305'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+//sourceCompatibility = 1.5
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+}
+

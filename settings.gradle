@@ -1,0 +1,4 @@
+rootProject.name = 'FileCompressFramework'
+include 'framework'
+include 'sample'
+
