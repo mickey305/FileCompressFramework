@@ -7,7 +7,7 @@ import java.lang.reflect.Field;
  * Created by K.Misaki on 2017/04/16.
  */
 public class FieldCounter {
-    Class<?> target;
+    private Class<?> target;
 
     public interface ModifierCallback{
         boolean onModifierIf(int modifier);
