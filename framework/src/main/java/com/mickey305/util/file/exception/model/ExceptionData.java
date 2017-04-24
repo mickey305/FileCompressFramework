@@ -2,6 +2,7 @@ package com.mickey305.util.file.exception.model;
 
 /**
  * Created by K.Misaki on 2017/04/15.
+ *
  */
 public class ExceptionData {
     private String message;

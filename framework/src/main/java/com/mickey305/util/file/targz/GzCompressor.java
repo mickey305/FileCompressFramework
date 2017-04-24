@@ -11,6 +11,7 @@ import java.util.Collection;
 
 /**
  * Created by K.Misaki on 2017/04/02.
+ *
  */
 public class GzCompressor extends AbsCompressManager<BufferedInputStream, GzipCompressorOutputStream> {
     private static final int DEFAULT_BUFFER_POOL_SIZE = 2^10;
@@ -26,10 +27,14 @@ public class GzCompressor extends AbsCompressManager<BufferedInputStream, GzipCo
     }
 
     /**
+     * 圧縮する
      *
-     * @param inDirPath
-     * @param outFilePath
-     * @return
+     * @deprecated サポート対象外 <p>上書きすることで親クラスの該当メソッド{@link com.mickey305.util.file.AbsCompressManager#compressDir(String, String)}
+     * を無効化しているが、将来的に継承クラスを代替する予定。</p>
+     *
+     * @param inDirPath 入力フォルダパス名
+     * @param outFilePath 出力ファイルパス名
+     * @return 処理結果
      */
     @Deprecated
     @Override
@@ -39,28 +44,31 @@ public class GzCompressor extends AbsCompressManager<BufferedInputStream, GzipCo
     }
 
     /**
+     * 圧縮する
      *
-     * @param inFilePaths
-     * @param outFilePath
-     * @return
-     * @throws FilePathException
+     * @deprecated サポート対象外 <p>内部的に使用されている箇所があるため、一時的に定義しているが将来的に継承クラスを代替する予定。</p>
+     *
+     * @param inFilePaths 入力ファイルパス名
+     * @param outFilePath 出力ファイルパス名
+     * @return 処理結果
+     * @throws FilePathException ファイルパス例外
      */
-    @Deprecated
+    @Deprecated()
     @Override
     public boolean compress(Collection<String> inFilePaths, String outFilePath) throws FilePathException {
         return super.compress(inFilePaths, outFilePath);
     }
 
     /**
-     *
-     * @param bis
-     * @param inAbsoluteFileName
-     * @param gzos
-     * @return
-     * @throws IOException
+     * 圧縮する（コアタスク）
+     * @param bis オープン済み入力ストリーム（オートクローズ：{@link java.lang.AutoCloseable}）
+     * @param inRelativeFileName 圧縮対象のファイルパス名（入力フォルダをルートフォルダとした場合の相対的なファイル名）
+     * @param gzos オープン済み出力ストリーム（オートクローズ：{@link java.lang.AutoCloseable}）
+     * @return オープン済み出力ストリーム（後続処理返却用）
+     * @throws IOException 入出力例外
      */
     @Override
-    protected GzipCompressorOutputStream compress(BufferedInputStream bis, String inAbsoluteFileName, GzipCompressorOutputStream gzos) throws IOException {
+    protected GzipCompressorOutputStream compress(BufferedInputStream bis, String inRelativeFileName, GzipCompressorOutputStream gzos) throws IOException {
         int readSize;
         byte buffer[] = new byte[DEFAULT_BUFFER_POOL_SIZE];
         while ((readSize = bis.read(buffer, 0, buffer.length)) != -1) {
@@ -70,10 +78,10 @@ public class GzCompressor extends AbsCompressManager<BufferedInputStream, GzipCo
     }
 
     /**
-     *
-     * @param inFile
-     * @return
-     * @throws FileNotFoundException
+     * 入力ストリームを生成する
+     * @param inFile 入力ストリームにバインドするファイル
+     * @return 入力ストリーム
+     * @throws FileNotFoundException ファイル存在例外
      */
     @Nonnull
     @Override
@@ -84,10 +92,10 @@ public class GzCompressor extends AbsCompressManager<BufferedInputStream, GzipCo
     }
 
     /**
-     *
-     * @param outFile
-     * @return
-     * @throws IOException
+     * 出力ストリームを生成する
+     * @param outFile 出力ストリームにバインドするファイル
+     * @return 出力ストリーム
+     * @throws FileNotFoundException ファイル存在例外
      */
     @Nonnull
     @Override

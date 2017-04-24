@@ -8,6 +8,7 @@ import java.util.Map;
 
 /**
  * Created by K.Misaki on 2017/04/15.
+ *
  */
 public class ExceptionResultSet extends ExceptionValues {
     private Map<Integer, ExceptionData> resultSet;
@@ -25,10 +26,13 @@ public class ExceptionResultSet extends ExceptionValues {
     }
 
     /**
+     * 例外用のオブジェクトマップ情報を更新する
      *
-     * @param resultCode
-     * @param data
-     * @return
+     * @deprecated このオブジェクトマップを使用している複数箇所のロジックに影響を与えるため、影響範囲を明確にしたうえで使用する。
+     *
+     * @param resultCode 例外オブジェクト識別キー（更新対象オブジェクト検索）
+     * @param data 更新するオブジェクトデータ
+     * @return 処理結果
      */
     @Deprecated
     public boolean updateResultSet(int resultCode, ExceptionData data) {
@@ -45,9 +49,7 @@ public class ExceptionResultSet extends ExceptionValues {
         chkResultSetSize();
     }
 
-    /**
-     *
-     */
+    // マップ情報を作成する
     private void createMapping() {
         resultSet = new HashMap<>();
         resultSet.put(CD_IN_FILE_PATH, new ExceptionData(MSG_IN_FILE_PATH));
@@ -59,9 +61,7 @@ public class ExceptionResultSet extends ExceptionValues {
         resultSet.put(CD_VALIDATION_FILE_PATH, new ExceptionData(MSG_VALIDATION_FILE_PATH));
     }
 
-    /**
-     *
-     */
+    // マップサイズを確認する
     private void chkResultSetSize() {
         FieldCounter fc = new FieldCounter(ExceptionValues.class);
         if (getResultSet().size() != fc.countByPrefix("CD", Modifier::isStatic))

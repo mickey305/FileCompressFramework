@@ -2,6 +2,7 @@ package com.mickey305.util.file.exception.model;
 
 /**
  * Created by K.Misaki on 2017/04/02.
+ * <p>例外リソース</p>
  */
 public class ExceptionValues {
     public static final int CD_IN_FILE_PATH = 10;

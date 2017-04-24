@@ -5,6 +5,7 @@ import java.lang.reflect.Field;
 
 /**
  * Created by K.Misaki on 2017/04/16.
+ *
  */
 public class FieldCounter {
     private Class<?> target;
@@ -26,10 +27,10 @@ public class FieldCounter {
     }
 
     /**
-     *
-     * @param prefix
-     * @param callback
-     * @return
+     * フィールドをカウントする
+     * @param prefix 接頭辞
+     * @param callback コールバックインタフェース（修飾子判定用）
+     * @return 該当フィールド数
      */
     public int countByPrefix(String prefix, @Nonnull ModifierCallback callback) {
         int fieldCount = 0;
@@ -43,10 +44,10 @@ public class FieldCounter {
     }
 
     /**
-     *
-     * @param suffix
-     * @param callback
-     * @return
+     * フィールドをカウントする
+     * @param suffix 接尾辞
+     * @param callback コールバックインタフェース（修飾子判定用）
+     * @return 該当フィールド数
      */
     public int countBySuffix(String suffix, @Nonnull ModifierCallback callback) {
         int fieldCount = 0;
@@ -60,10 +61,10 @@ public class FieldCounter {
     }
 
     /**
-     *
-     * @param contains
-     * @param callback
-     * @return
+     * フィールドをカウントする
+     * @param contains フィールド名（一部）
+     * @param callback コールバックインタフェース（修飾子判定用）
+     * @return 該当フィールド数
      */
     public int countContains(String contains, @Nonnull ModifierCallback callback) {
         int fieldCount = 0;

@@ -9,6 +9,7 @@ import static com.mickey305.util.file.StringUtils.createUniqueTime;
 
 /**
  * Created by K.Misaki on 2017/04/02.
+ *
  */
 public class TarGzCompressor {
     public static final String TAG = TarGzCompressor.class.getSimpleName();
@@ -30,11 +31,11 @@ public class TarGzCompressor {
     }
 
     /**
-     *
-     * @param inFilePaths
-     * @param outFilePath
-     * @return
-     * @throws FilePathException
+     * 圧縮する
+     * @param inFilePaths 入力ファイルパス名
+     * @param outFilePath 出力ファイルパス名
+     * @return 処理結果
+     * @throws FilePathException ファイルパス例外
      */
     public boolean compress(Collection<String> inFilePaths, String outFilePath) throws FilePathException {
         String tmpFileName = "archiveTemporaryOf" + TAG + createUniqueTime("yyyyMMddHHmmssSSS") + ".tmp";
@@ -63,11 +64,11 @@ public class TarGzCompressor {
     }
 
     /**
-     *
-     * @param inFilePath
-     * @param outFilePath
-     * @return
-     * @throws FilePathException
+     * 圧縮する
+     * @param inFilePath 入力ファイルパス名
+     * @param outFilePath 出力ファイルパス名
+     * @return 処理結果
+     * @throws FilePathException ファイルパス例外
      */
     public boolean compress(String inFilePath, String outFilePath) throws FilePathException {
         String tmpFileName = "archiveTemporaryOf" + TAG + createUniqueTime("yyyyMMddHHmmssSSS") + ".tmp";
@@ -96,11 +97,11 @@ public class TarGzCompressor {
     }
 
     /**
-     *
-     * @param inDirPath
-     * @param outFilePath
-     * @return
-     * @throws FilePathException
+     * 圧縮する
+     * @param inDirPath 入力フォルダパス名
+     * @param outFilePath 出力ファイルパス名
+     * @return 処理結果
+     * @throws FilePathException ファイルパス例外
      */
     public boolean compressDir(String inDirPath, String outFilePath) throws FilePathException {
         String tmpFileName = "archiveTemporaryOf" + TAG + createUniqueTime("yyyyMMddHHmmssSSS") + ".tmp";
@@ -129,10 +130,10 @@ public class TarGzCompressor {
     }
 
     /**
-     *
-     * @param inFilePath
-     * @return
-     * @throws FilePathException
+     * 圧縮する
+     * @param inFilePath 入力ファイルパス名
+     * @return 処理結果
+     * @throws FilePathException ファイルパス例外
      */
     public boolean compress(String inFilePath) throws FilePathException {
         String tmpFileName = "archiveTemporaryOf" + TAG + createUniqueTime("yyyyMMddHHmmssSSS") + ".tmp";
@@ -161,10 +162,10 @@ public class TarGzCompressor {
     }
 
     /**
-     *
-     * @param inDirPath
-     * @return
-     * @throws FilePathException
+     * 圧縮する
+     * @param inDirPath 入力フォルダパス名
+     * @return 処理結果
+     * @throws FilePathException ファイルパス例外
      */
     public boolean compressDir(String inDirPath) throws FilePathException {
         String tmpFileName = "archiveTemporaryOf" + TAG + createUniqueTime("yyyyMMddHHmmssSSS") + ".tmp";

@@ -7,6 +7,7 @@ import java.io.IOException;
 
 /**
  * Created by K.Misaki on 2017/04/16.
+ *
  */
 public class Sample {
     private static final String HOME = System.getProperty("user.home");

@@ -25,6 +25,7 @@ import static com.mickey305.util.file.exception.model.ExceptionValues.CD_NOT_EXI
 
 /**
  * Created by K.Misaki on 2017/04/02.
+ *
  */
 public class ZipDeCompressor implements StreamIO<ZipInputStream, BufferedOutputStream> {
     private static final int DEFAULT_BUFFER_POOL_SIZE = 2^10;
@@ -60,11 +61,11 @@ public class ZipDeCompressor implements StreamIO<ZipInputStream, BufferedOutputS
     }
 
     /**
-     *
-     * @param inFilePaths
-     * @param outDirPath
-     * @return
-     * @throws FilePathException
+     * 解凍する
+     * @param inFilePaths 入力ファイルパス名
+     * @param outDirPath 出力フォルダパス名
+     * @return 処理結果
+     * @throws FilePathException ファイルパス例外
      */
     public boolean decompress(Collection<String> inFilePaths, String outDirPath) throws FilePathException {
         final File outDir = new File(outDirPath);
@@ -173,23 +174,23 @@ public class ZipDeCompressor implements StreamIO<ZipInputStream, BufferedOutputS
     }
 
     /**
-     *
-     * @param inFilePath
-     * @param outFilePath
-     * @return
-     * @throws FilePathException
+     * 解凍する
+     * @param inFilePath 入力ファイルパス名
+     * @param outDirPath 出力フォルダパス名
+     * @return 処理結果
+     * @throws FilePathException ファイルパス例外
      */
-    public boolean decompress(String inFilePath, String outFilePath) throws FilePathException {
+    public boolean decompress(String inFilePath, String outDirPath) throws FilePathException {
         Collection<String> inFilePaths = new ArrayList<>();
         inFilePaths.add(inFilePath);
-        return this.decompress(inFilePaths, outFilePath);
+        return this.decompress(inFilePaths, outDirPath);
     }
 
     /**
-     *
-     * @param inFilePath
-     * @return
-     * @throws FilePathException
+     * 解凍する
+     * @param inFilePath 入力ファイルパス名
+     * @return 処理結果
+     * @throws FilePathException ファイルパス例外
      */
     public boolean decompress(String inFilePath) throws FilePathException {
         Collection<String> inFilePaths = new ArrayList<>();
@@ -198,12 +199,12 @@ public class ZipDeCompressor implements StreamIO<ZipInputStream, BufferedOutputS
     }
 
     /**
-     *
-     * @param zis
-     * @param bos
-     * @return
-     * @throws IOException
-     * @throws FilePathException
+     * 解凍する（コアタスク）
+     * @param zis オープン済みZip入力ストリーム（オートクローズ：{@link java.lang.AutoCloseable}）
+     * @param bos オープン済みキャッシング出力ストリーム（オートクローズ：{@link java.lang.AutoCloseable}）
+     * @return オープン済みキャッシング出力ストリーム（後続処理返却用）
+     * @throws IOException 入出力例外
+     * @throws FilePathException ファイルパス例外
      */
     private BufferedOutputStream decompress(ZipInputStream zis, BufferedOutputStream bos) throws IOException, FilePathException {
         int readSize;
@@ -216,10 +217,10 @@ public class ZipDeCompressor implements StreamIO<ZipInputStream, BufferedOutputS
     }
 
     /**
-     *
-     * @param inFile
-     * @return
-     * @throws FileNotFoundException
+     * 入力ストリームを生成する
+     * @param inFile 入力ストリームにバインドするファイル
+     * @return 入力ストリーム
+     * @throws FileNotFoundException ファイル存在例外
      */
     @Nonnull
     @Override
@@ -233,10 +234,10 @@ public class ZipDeCompressor implements StreamIO<ZipInputStream, BufferedOutputS
     }
 
     /**
-     *
-     * @param outFile
-     * @return
-     * @throws FileNotFoundException
+     * 出力ストリームを生成する
+     * @param outFile 出力ストリームにバインドするファイル
+     * @return 出力ストリーム
+     * @throws FileNotFoundException ファイル存在例外
      */
     @Nonnull
     @Override

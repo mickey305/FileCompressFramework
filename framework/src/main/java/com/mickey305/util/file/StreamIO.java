@@ -6,6 +6,7 @@ import java.io.*;
 
 /**
  * Created by K.Misaki on 2017/04/09.
+ *
  */
 public interface StreamIO<I extends InputStream, O extends OutputStream> {
     /**

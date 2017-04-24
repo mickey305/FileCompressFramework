@@ -1,32 +1,13 @@
-/*
- * The MIT License (MIT)
- *
- * Copyright (c) 2016 K.Misaki
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
 package com.mickey305.util;
 
 import javax.annotation.Nonnull;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+/**
+ * Created by K.Misaki on 2017/04/16.
+ *
+ */
 public class Log {
     protected static final String ANSI_RESET = "\u001b[0m";
 
@@ -51,8 +32,8 @@ public class Log {
     private Log() {}
 
     /**
-     *
-     * @return
+     * 現在日時を取得する
+     * @return 現在時刻（フォーマット「yyyy-MM-dd HH:mm:ss.SSS」）
      */
     @Nonnull
     private static String createHeader() {
@@ -62,10 +43,10 @@ public class Log {
     }
 
     /**
-     *
-     * @param clazz
-     * @param methodName
-     * @param msg
+     * ログ情報を出力する（標準出力・デバッグモード）
+     * @param clazz 対象Classクラス
+     * @param methodName 対象メソッド名
+     * @param msg メッセージ
      */
     public synchronized static void d(Class clazz, String methodName, String msg) {
         if (Config.DEBUG_MODE)
@@ -73,16 +54,16 @@ public class Log {
     }
 
     /**
-     *
-     * @param msg
+     * ログ情報を出力する（標準出力）
+     * @param msg メッセージ
      */
     public synchronized static void i(String msg) {
         System.out.println(ANSI_FONT_BLUE + createHeader() + " I/D " + ANSI_RESET + msg);
     }
 
     /**
-     *
-     * @param msg
+     * ログ情報を出力する（エラー出力）
+     * @param msg メッセージ
      */
     public synchronized static void e(String msg) {
         System.err.println(createHeader() + "  E  " + msg);

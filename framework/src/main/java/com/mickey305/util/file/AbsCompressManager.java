@@ -21,7 +21,8 @@ import static com.mickey305.util.file.FileCheckMethods.chkDirHolder;
 import static com.mickey305.util.file.exception.model.ExceptionValues.*;
 
 /**
- * Created by @author K.Misaki on 2017/04/02.
+ * Created by K.Misaki on 2017/04/02.
+ *
  */
 public abstract class AbsCompressManager<I extends InputStream, O extends OutputStream> implements StreamIO<I, O> {
 
@@ -36,11 +37,11 @@ public abstract class AbsCompressManager<I extends InputStream, O extends Output
 //    }
 
     /**
-     *
-     * @param inFilePaths
-     * @param outFilePath
-     * @return
-     * @throws FilePathException
+     * 圧縮する
+     * @param inFilePaths 入力ファイルパス名
+     * @param outFilePath 出力ファイルパス名
+     * @return 処理結果
+     * @throws FilePathException ファイルパス例外
      */
     public boolean compress(Collection<String> inFilePaths, String outFilePath) throws FilePathException {
         File outFile = new File(outFilePath);
@@ -88,11 +89,11 @@ public abstract class AbsCompressManager<I extends InputStream, O extends Output
     }
 
     /**
-     *
-     * @param inFilePath
-     * @param outFilePath
-     * @return
-     * @throws FilePathException
+     * 圧縮する
+     * @param inFilePath 入力ファイルパス名
+     * @param outFilePath 出力ファイルパス名
+     * @return 処理結果
+     * @throws FilePathException ファイルパス例外
      */
     public boolean compress(String inFilePath, String outFilePath) throws FilePathException {
         Collection<String> inFilePaths = new ArrayList<>();
@@ -101,10 +102,10 @@ public abstract class AbsCompressManager<I extends InputStream, O extends Output
     }
 
     /**
-     *
-     * @param inFilePath
-     * @return
-     * @throws FilePathException
+     * 圧縮する
+     * @param inFilePath 入力ファイルパス名
+     * @return 処理結果
+     * @throws FilePathException ファイルパス例外
      */
     public boolean compress(String inFilePath) throws FilePathException {
         Collection<String> inFilePaths = new ArrayList<>();
@@ -113,21 +114,21 @@ public abstract class AbsCompressManager<I extends InputStream, O extends Output
     }
 
     /**
-     *
-     * @param inDirPath
-     * @return
-     * @throws FilePathException
+     * 圧縮する
+     * @param inDirPath 入力フォルダパス名
+     * @return 処理結果
+     * @throws FilePathException ファイルパス例外
      */
     public boolean compressDir(String inDirPath) throws FilePathException {
         return this.compressDir(inDirPath, new File(inDirPath).getParent());
     }
 
     /**
-     *
-     * @param inDirPath
-     * @param outFilePath
-     * @return
-     * @throws FilePathException
+     * 圧縮する
+     * @param inDirPath 入力フォルダパス名
+     * @param outFilePath 出力ファイルパス名
+     * @return 処理結果
+     * @throws FilePathException ファイルパス例外
      */
     public boolean compressDir(String inDirPath, String outFilePath) throws FilePathException {
         File outFile = new File(outFilePath);
@@ -174,14 +175,6 @@ public abstract class AbsCompressManager<I extends InputStream, O extends Output
         return true;
     }
 
-    /**
-     *
-     * @param inDir
-     * @param outFile
-     * @param os
-     * @param inputBaseDir
-     * @return
-     */
     private O compress(File inDir, File outFile, O os, final File inputBaseDir) {
         File[] inFiles = inDir.listFiles();
         assert inFiles != null;
@@ -200,13 +193,6 @@ public abstract class AbsCompressManager<I extends InputStream, O extends Output
         return os;
     }
 
-    /**
-     *
-     * @param inFile
-     * @param inAbsoluteFileName
-     * @param os
-     * @return
-     */
     private O compress(File inFile, String inAbsoluteFileName, O os) {
         try (I is = this.createInputStream(inFile)) {
             os = this.compress(is, inAbsoluteFileName, os);
@@ -221,14 +207,14 @@ public abstract class AbsCompressManager<I extends InputStream, O extends Output
     }
 
     /**
-     *
-     * @param is
-     * @param inAbsoluteFileName
-     * @param os
-     * @return
-     * @throws IOException
+     * 圧縮する（コアタスク）
+     * @param is オープン済み入力ストリーム（オートクローズ：{@link java.lang.AutoCloseable}）
+     * @param inRelativeFileName 圧縮対象のファイルパス名（入力フォルダをルートフォルダとした場合の相対的なファイル名）
+     * @param os オープン済み出力ストリーム（オートクローズ：{@link java.lang.AutoCloseable}）
+     * @return オープン済み出力ストリーム（後続処理返却用）
+     * @throws IOException 入出力例外
      */
-    abstract protected O compress(I is, String inAbsoluteFileName, O os) throws IOException;
+    abstract protected O compress(I is, String inRelativeFileName, O os) throws IOException;
 
     /**
      * 入力ストリームを生成する

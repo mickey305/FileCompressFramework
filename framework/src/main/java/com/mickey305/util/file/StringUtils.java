@@ -7,6 +7,7 @@ import java.util.Calendar;
 
 /**
  * Created by K.Misaki on 2017/04/09.
+ *
  */
 public class StringUtils {
 

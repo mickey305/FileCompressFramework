@@ -4,6 +4,7 @@ import com.mickey305.util.file.exception.model.ExceptionData;
 
 /**
  * Created by K.Misaki on 2017/04/15.
+ *
  */
 public abstract class AbsException extends Exception {
     private int resultCode;

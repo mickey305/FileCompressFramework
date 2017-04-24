@@ -14,16 +14,14 @@ import static com.mickey305.util.file.exception.model.ExceptionValues.*;
 
 /**
  * Created by K.Misaki on 2017/04/02.
+ *
  */
 public class FileCheckMethods {
     /**
-     *
+     * ファイルタイプ
      */
     public enum FileType{IN, OUT}
 
-    /**
-     *
-     */
     public interface ErrorTaskCallback {
         void onErrorTask(Throwable th) throws FilePathException;
     }
@@ -31,11 +29,11 @@ public class FileCheckMethods {
     private FileCheckMethods() {}
 
     /**
-     *
-     * @param targetFile
-     * @param type
-     * @param taskCallback
-     * @throws FilePathException
+     * フォルダを検証する
+     * @param targetFile 対象フォルダ名
+     * @param type 対象ファイルタイプ
+     * @param taskCallback コールバックインタフェース（エラー処理用）
+     * @throws FilePathException ファイルパス例外
      */
     public static void chkDirHolder(@Nonnull final File targetFile, @Nonnull final FileType type, ErrorTaskCallback taskCallback) throws FilePathException {
         FilePathException exception;
@@ -72,11 +70,11 @@ public class FileCheckMethods {
     }
 
     /**
-     *
-     * @param targetFile
-     * @param type
-     * @param taskCallback
-     * @throws FilePathException
+     * ファイルを検証する
+     * @param targetFile 対象ファイル名
+     * @param type 対象ファイルタイプ
+     * @param taskCallback コールバックインタフェース（エラー処理用）
+     * @throws FilePathException ファイルパス例外
      */
     public static void chkFileHolder(@Nonnull final File targetFile, @Nonnull final FileType type, ErrorTaskCallback taskCallback) throws FilePathException {
         FilePathException exception;
@@ -108,13 +106,13 @@ public class FileCheckMethods {
     }
 
     /**
-     *
-     * @param file
-     * @param targetDir
-     * @param taskCallback
-     * @return
-     * @throws FilePathException
-     * @throws IOException
+     * バリデーションファイル名を取得する
+     * @param file 対象ファイル
+     * @param targetDir 検証用フォルダ
+     * @param taskCallback コールバックインタフェース（エラー処理用）
+     * @return バリデーションファイル名
+     * @throws FilePathException ファイルパス例外
+     * @throws IOException 入出力例外
      */
     public static String validateFileName(@Nonnull final File file, @Nonnull final File targetDir, ErrorTaskCallback taskCallback) throws FilePathException, IOException {
         String filePath = file.getCanonicalPath();
@@ -132,11 +130,11 @@ public class FileCheckMethods {
     }
 
     /**
-     *
-     * @param targetFile
-     * @param type
-     * @param taskCallback
-     * @throws FilePathException
+     * ファイルの存在有無を検証する
+     * @param targetFile 対象ファイル名
+     * @param type 対象ファイルタイプ
+     * @param taskCallback コールバックインタフェース（エラー処理用）
+     * @throws FilePathException ファイルパス例外
      */
     private static void chkFileExistence(@Nonnull final File targetFile, @Nonnull final FileType type, ErrorTaskCallback taskCallback) throws FilePathException {
         if (type == FileType.IN) {
@@ -163,11 +161,11 @@ public class FileCheckMethods {
     }
 
     /**
-     *
-     * @param targetFile
-     * @param type
-     * @param taskCallback
-     * @throws FilePathException
+     * フォルダの存在有無を検証する
+     * @param targetFile 対象フォルダ名
+     * @param type 対象ファイルタイプ
+     * @param taskCallback コールバックインタフェース（エラー処理用）
+     * @throws FilePathException ファイルパス例外
      */
     private static void chkDirExistence(@Nonnull final File targetFile, @Nonnull final FileType type, ErrorTaskCallback taskCallback) throws FilePathException {
         if (type == FileType.IN) {
