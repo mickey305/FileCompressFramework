@@ -2,11 +2,12 @@
 <metadata>
   <groupId>com.mickey305</groupId>
   <artifactId>framework</artifactId>
+  <version>0.0.2-SNAPSHOT</version>
   <versioning>
-    <versions>
-      <version>0.0.1-SNAPSHOT</version>
-      <version>0.0.2-SNAPSHOT</version>
-    </versions>
+    <snapshot>
+      <timestamp>20170424.130943</timestamp>
+      <buildNumber>1</buildNumber>
+    </snapshot>
     <lastUpdated>20170424130943</lastUpdated>
   </versioning>
 </metadata>

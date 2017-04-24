@@ -33,4 +33,7 @@ dependencies {
 }
 ```
 # History
+ * version 0.0.2-SNAPSHOT deploy - 2017-4-24
+    * singleton object - multi-thread supported.
+    * javadoc comment added.
  * version 0.0.1-SNAPSHOT deploy - 2017-4-16
