@@ -10,11 +10,14 @@ import java.util.Map;
  * Created by K.Misaki on 2017/04/15.
  */
 public class ExceptionResultSet extends ExceptionValues {
-    private static final ExceptionResultSet instance = new ExceptionResultSet();
     private Map<Integer, ExceptionData> resultSet;
 
     public static ExceptionResultSet getInstance() {
-        return instance;
+        return ExceptionResultSetHolder.INSTANCE;
+    }
+
+    private static class ExceptionResultSetHolder {
+        private static final ExceptionResultSet INSTANCE = new ExceptionResultSet();
     }
 
     public Map<Integer, ExceptionData> getResultSet() {

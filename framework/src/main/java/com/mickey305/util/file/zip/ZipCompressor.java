@@ -15,14 +15,17 @@ public class ZipCompressor extends AbsCompressManager<BufferedInputStream, ZipOu
     private static final int DEFAULT_COMPRESS_LEVEL = 5;
     private static final int DEFAULT_BUFFER_POOL_SIZE = 2^10;
     private static final String DEFAULT_ENCODING = "UTF-8";
-    private static final ZipCompressor instance = new ZipCompressor();
 
     private String encoding;
 
     private ZipCompressor() {}
 
     public static ZipCompressor getInstance() {
-        return instance;
+        return ZipCompressorHolder.INSTANCE;
+    }
+
+    private static class ZipCompressorHolder {
+        private static final ZipCompressor INSTANCE = new ZipCompressor();
     }
 
     public String getEncoding() {

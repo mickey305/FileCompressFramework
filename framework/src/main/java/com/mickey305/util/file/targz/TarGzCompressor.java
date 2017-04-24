@@ -12,7 +12,6 @@ import static com.mickey305.util.file.StringUtils.createUniqueTime;
  */
 public class TarGzCompressor {
     public static final String TAG = TarGzCompressor.class.getSimpleName();
-    private static final TarGzCompressor instance = new TarGzCompressor();
 
     private TarArchiver archiver;
     private GzCompressor compressor;
@@ -23,7 +22,11 @@ public class TarGzCompressor {
     }
 
     public static TarGzCompressor getInstance() {
-        return instance;
+        return TarGzCompressorHolder.INSTANCE;
+    }
+
+    private static class TarGzCompressorHolder {
+        private static final TarGzCompressor INSTANCE = new TarGzCompressor();
     }
 
     /**

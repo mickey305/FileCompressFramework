@@ -13,14 +13,17 @@ import java.io.*;
  */
 public class TarArchiver extends AbsCompressManager<BufferedInputStream, TarArchiveOutputStream> {
     private static final int DEFAULT_BUFFER_POOL_SIZE = 2^10;
-    private static final TarArchiver instance = new TarArchiver();
 
     private File inFile;
 
     private TarArchiver() {}
 
     public static TarArchiver getInstance() {
-        return instance;
+        return TarArchiverHolder.INSTANCE;
+    }
+
+    private static class TarArchiverHolder {
+        private static final TarArchiver INSTANCE = new TarArchiver();
     }
 
     /**

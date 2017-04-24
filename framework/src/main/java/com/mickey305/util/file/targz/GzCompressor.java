@@ -14,12 +14,15 @@ import java.util.Collection;
  */
 public class GzCompressor extends AbsCompressManager<BufferedInputStream, GzipCompressorOutputStream> {
     private static final int DEFAULT_BUFFER_POOL_SIZE = 2^10;
-    private static final GzCompressor instance = new GzCompressor();
 
     private GzCompressor() {}
 
     public static GzCompressor getInstance() {
-        return instance;
+        return GzCompressorHolder.INSTANCE;
+    }
+
+    private static class GzCompressorHolder {
+        private static final GzCompressor INSTANCE = new GzCompressor();
     }
 
     /**

@@ -29,7 +29,6 @@ import static com.mickey305.util.file.exception.model.ExceptionValues.CD_NOT_EXI
 public class ZipDeCompressor implements StreamIO<ZipInputStream, BufferedOutputStream> {
     private static final int DEFAULT_BUFFER_POOL_SIZE = 2^10;
     private static final String DEFAULT_ENCODING = "UTF-8";
-    private static final ZipDeCompressor instance = new ZipDeCompressor();
 
     private String encoding;
     private ConflictOutputFileListener listener;
@@ -37,7 +36,11 @@ public class ZipDeCompressor implements StreamIO<ZipInputStream, BufferedOutputS
     private ZipDeCompressor() {}
 
     public static ZipDeCompressor getInstance() {
-        return instance;
+        return ZipDeCompressorHolder.INSTANCE;
+    }
+
+    private static class ZipDeCompressorHolder {
+        private static final ZipDeCompressor INSTANCE = new ZipDeCompressor();
     }
 
 //    public ConflictOutputFileListener getListener() {
