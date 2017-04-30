@@ -1,11 +1,11 @@
 # FileCompressFramework
 
-| | branch | travis ci |
-|:---:|:---|:---|
-| release | gh-pages | [![Build Status](https://travis-ci.org/mickey305/FileCompressFramework.svg?branch=gh-pages)](https://travis-ci.org/mickey305/FileCompressFramework) |
-| - | develop | [![Build Status](https://travis-ci.org/mickey305/FileCompressFramework.svg?branch=develop)](https://travis-ci.org/mickey305/FileCompressFramework) |
+| | branch | travis ci | JitPack |
+|:---:|:---|:---|:---|
+| release | gh-pages | [![Build Status](https://travis-ci.org/mickey305/FileCompressFramework.svg?branch=gh-pages)](https://travis-ci.org/mickey305/FileCompressFramework) | [![](https://jitpack.io/v/mickey305/FileCompressFramework.svg)](https://jitpack.io/#mickey305/FileCompressFramework) |
+| - | develop | [![Build Status](https://travis-ci.org/mickey305/FileCompressFramework.svg?branch=develop)](https://travis-ci.org/mickey305/FileCompressFramework) |  |
 
-# Installation
+# Installation(Pattern 1)
 ## 1 - Register repository in local library
 
 ```
@@ -32,6 +32,27 @@ dependencies {
   ...
 }
 ```
+
+# Installation(Pattern 2) - how to use the JitPack service
+## 1 - Register repository in local library
+
+```
+repositories {
+  maven { url 'https://jitpack.io' }
+  ...
+}
+```
+
+## 2 - Compile library
+
+```
+dependencies {
+  // target version - e.g. version 0.0.1-SNAPSHOT
+  compile 'com.github.mickey305:FileCompressFramework:0.0.1-SNAPSHOT'
+  ...
+}
+```
+
 # History
  * version 0.0.2-SNAPSHOT deploy - 2017-4-24
     * singleton object - multi-thread supported.

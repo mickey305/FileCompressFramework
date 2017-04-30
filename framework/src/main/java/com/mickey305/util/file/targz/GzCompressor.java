@@ -53,7 +53,7 @@ public class GzCompressor extends AbsCompressManager<BufferedInputStream, GzipCo
      * @return 処理結果
      * @throws FilePathException ファイルパス例外
      */
-    @Deprecated()
+    @Deprecated
     @Override
     public boolean compress(Collection<String> inFilePaths, String outFilePath) throws FilePathException {
         return super.compress(inFilePaths, outFilePath);
