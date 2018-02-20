@@ -100,7 +100,7 @@ public class ZipDeCompressor implements StreamIO<ZipInputStream, BufferedOutputS
 
                     if (outBaseMedia == null) {
                         outBaseMedia = new File(outDir + File.separator + zipEntry.getName().split(
-                                File.separator.equals("//") ? "////": File.separator, -1)[0]);
+                                File.separator.equals("\\") ? "\\\\": File.separator, -1)[0]);
                     }
 
                     if (outBaseMedia.exists() && changedOutputName) {
